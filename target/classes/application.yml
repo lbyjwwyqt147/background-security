@@ -1,0 +1,27 @@
+# 默认的profile为dev，其他环境通过指定启动参数使用不同的profile，比如：
+#   测试环境：java -jar my-spring-boot.jar --spring.profiles.active=test
+#   生产环境：java -jar my-spring-boot.jar --spring.profiles.active=prod
+# 当前起作用的配置文件是application-dev.yml 如果需要不同环境则修改这个配置的 dev值
+spring:
+  profiles:
+    active: dev
+    
+#mybatis 配置
+mybatis: 
+   #指明mapper的xml文件存放位置
+   mapperLocations: classpath:sqlMapperXml/*.xml
+   #指明和数据库映射的实体的所在包
+   typeAliasesPackage: pers.ljy.background.model 
+   #指明dao文件存放位置
+   mapperDaoPackge: pers.ljy.background.mapper
+   #mybatis 分页插件配置
+   pagehelper:
+      helperDialect: mysql
+      reasonable: true
+      supportMethodsArguments: true
+      offsetAsPageNum: true
+      rowBoundsWithCount: true 
+      pageSizeZero: true
+      params: pageNum=start;pageSize=limit;
+         
+

@@ -1,0 +1,75 @@
+#端口
+server:
+  port: 8080
+  
+#数据源配置
+druid:
+   type: com.alibaba.druid.pool.DruidDataSource
+   #主库
+   master:
+        url: jdbc:mysql://127.0.0.1:3306/background_security?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root@123
+        driver-class-name: com.mysql.jdbc.Driver
+        #通过别名的方式配置扩展插件，常用的插件有： 监控统计用的filter:stat日志用的filter:log4j防御sql注入的filter:wall
+        filters: stat
+        #最大并发连接数
+        maxActive: 20
+        #初始化连接数量
+        initialSize: 1
+        #配置获取连接等待超时的时间
+        maxWait: 60000
+        #最小空闲连接数
+        minIdle: 1
+        #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        #配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        #建议配置为TRUE，防止取到的连接不可用
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        #自动清除无用连接
+        removeAbandoned: true
+        #清除无用连接的等待时间
+        removeAbandonedTimeout: 1800
+        logAbandoned: true
+   #从库
+   slave:
+        url: jdbc:mysql://127.0.0.1:3306/background_security?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root@123
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        #自动清除无用连接
+        removeAbandoned: true
+        #清除无用连接的等待时间
+        removeAbandonedTimeout: 1800
+        logAbandoned: true
+        
+# redis 配置        
+spring:
+  redis:
+    host: 10.0.0.152
+    password: 
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1           

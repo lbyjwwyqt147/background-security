@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.ljy.background.mapper.SysRoleDao">
+  <resultMap id="BaseResultMap" type="pers.ljy.background.model.SysRoleEntity">
+    <id column="id_" jdbcType="INTEGER" property="id" />
+    <result column="role_name_" jdbcType="VARCHAR" property="roleName" />
+    <result column="remarks_" jdbcType="VARCHAR" property="remarks" />
+    <result column="status_" jdbcType="CHAR" property="status" />
+    <result column="create_date_" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_user_id_" jdbcType="INTEGER" property="createUserId" />
+    <result column="update_user_id_" jdbcType="INTEGER" property="updateUserId" />
+    <result column="update_date_" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+      id_, role_name_, remarks_, 
+      status_, create_date_, create_user_id_, 
+      update_user_id_, update_date_
+  </sql>
+  <!-- 根据主键删除数据库的记录 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_role
+    where id_ = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 插入数据 -->
+  <insert id="insert" parameterType="pers.ljy.background.model.SysRoleEntity">
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id_,
+      </if>
+      <if test="roleName != null" >
+        role_name_,
+      </if>
+      <if test="remarks != null" >
+        remarks_,
+      </if>
+      <if test="status != null" >
+        status_,
+      </if>
+      <if test="createDate != null" >
+        create_date_,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id_,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id_,
+      </if>
+      <if test="updateDate != null" >
+        update_date_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据主键来更新数据库记录 -->
+  <update id="updateByPrimaryKey" parameterType="pers.ljy.background.model.SysRoleEntity">
+    update sys_role
+    <set >
+      <if test="roleName != null" >
+        role_name_ = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks_ = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status_ = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date_ = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id_ = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id_ = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        update_date_ = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 根据主键获取一条数据库记录 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id_, role_name_, remarks_, status_, create_date_, create_user_id_, update_user_id_, 
+    update_date_
+    from sys_role
+    where id_ = #{id,jdbcType=INTEGER}
+  </select>
+   <!-- 获取全部数据库记录 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_role
+  </select>
+  
+</mapper>

@@ -1,0 +1,67 @@
+#端口
+server:
+  port: 8082
+
+#数据源配置
+druid:
+   type: com.alibaba.druid.pool.DruidDataSource
+   #主库
+   master:
+        url: jdbc:mysql://127.0.0.1:3306/background_security?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root@123
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        #自动清除无用连接
+        removeAbandoned: true
+        #清除无用连接的等待时间
+        removeAbandonedTimeout: 1800
+        logAbandoned: true
+   #从库
+   slave:
+        url: jdbc:mysql://127.0.0.1:3306/background_security?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root@123
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        #自动清除无用连接
+        removeAbandoned: true
+        #清除无用连接的等待时间
+        removeAbandonedTimeout: 1800
+        logAbandoned: true
+        
+# redis 配置        
+spring:
+  redis:
+    host: 10.0.0.152
+    password: 
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1        

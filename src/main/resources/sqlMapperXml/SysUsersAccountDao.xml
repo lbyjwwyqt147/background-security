@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.ljy.background.mapper.SysUsersAccountDao">
+  <resultMap id="BaseResultMap" type="pers.ljy.background.model.SysUsersAccountEntity">
+    <id column="id_" jdbcType="INTEGER" property="id" />
+    <result column="user_number_" jdbcType="VARCHAR" property="userNumber" />
+    <result column="user_id_" jdbcType="INTEGER" property="userId" />
+    <result column="user_name_" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd_" jdbcType="VARCHAR" property="userPwd" />
+    <result column="account_type_" jdbcType="CHAR" property="accountType" />
+    <result column="integral_" jdbcType="BIGINT" property="integral" />
+    <result column="status_" jdbcType="CHAR" property="status" />
+    <result column="salt_" jdbcType="VARCHAR" property="salt" />
+    <result column="create_date_" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id_, user_number_, user_id_, 
+    user_name_, user_pwd_, account_type_, 
+    integral_, status_, salt_, 
+    create_date_
+  </sql>
+  <!-- 根据主键删除数据库的记录 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_users_account
+    where id_ = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 插入数据 -->
+  <insert id="insert" parameterType="pers.ljy.background.model.SysUsersAccountEntity">
+     insert into sys_users_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id_,
+      </if>
+      <if test="userNumber != null" >
+        user_number_,
+      </if>
+      <if test="userId != null" >
+        user_id_,
+      </if>
+      <if test="userName != null" >
+        user_name_,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd_,
+      </if>
+      <if test="accountType != null" >
+        account_type_,
+      </if>
+      <if test="integral != null" >
+        integral_,
+      </if>
+      <if test="status != null" >
+        status_,
+      </if>
+      <if test="salt != null" >
+        salt_,
+      </if>
+      <if test="createDate != null" >
+        create_date_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userNumber != null" >
+        #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=CHAR},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据主键来更新数据库记录 -->
+  <update id="updateByPrimaryKey" parameterType="pers.ljy.background.model.SysUsersAccountEntity">
+    update sys_users_account
+    <set >
+      <if test="userNumber != null" >
+        user_number_ = #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id_ = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name_ = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd_ = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        account_type_ = #{accountType,jdbcType=CHAR},
+      </if>
+      <if test="integral != null" >
+        integral_ = #{integral,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status_ = #{status,jdbcType=CHAR},
+      </if>
+      <if test="salt != null" >
+        salt_ = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date_ = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=INTEGER}
+  </update>
+   <!-- 根据主键获取一条数据库记录 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_users_account
+    where id_ = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 获取全部数据库记录 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_users_account
+  </select>
+</mapper>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.ljy.background.mapper.SysLogsDao">
+  <resultMap id="BaseResultMap" type="pers.ljy.background.model.SysLogsEntity">
+    <id column="id_" jdbcType="BIGINT" property="id" />
+    <result column="user_id_" jdbcType="INTEGER" property="userId" />
+    <result column="logs_type_" jdbcType="CHAR" property="logsType" />
+    <result column="url_" jdbcType="VARCHAR" property="url" />
+    <result column="ip_" jdbcType="VARCHAR" property="ip" />
+    <result column="class_path_" jdbcType="VARCHAR" property="classPath" />
+    <result column="ask_method_" jdbcType="VARCHAR" property="askMethod" />
+    <result column="method_path_" jdbcType="VARCHAR" property="methodPath" />
+    <result column="request_method_" jdbcType="CHAR" property="requestMethod" />
+    <result column="description_" jdbcType="VARCHAR" property="description" />
+    <result column="error_code_" jdbcType="VARCHAR" property="errorCode" />
+    <result column="create_date_" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="params_" jdbcType="LONGVARCHAR" property="params" />
+    <result column="error_msg_" jdbcType="LONGVARCHAR" property="errorMsg" />
+    <result column="method_result_value_" jdbcType="LONGVARCHAR" property="methodResultValue" />
+    <result column="waste_time_" property="wasteTime" jdbcType="BIGINT" />
+    <result column="waste_time_msg_" property="wasteTimeMsg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id_, user_id_, logs_type_, url_, ip_, class_path_, ask_method_, method_path_, 
+    request_method_, description_, error_code_, create_date_, params_, error_msg_, method_result_value_, waste_time_, waste_time_msg_
+  </sql>
+  <!-- 根据主键删除数据库的记录 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_logs
+    where id_ = #{id,jdbcType=BIGINT}
+  </delete>
+  <!-- 插入数据 -->
+  <insert id="insert" parameterType="pers.ljy.background.model.SysLogsEntity">
+    insert into sys_logs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id_,
+      </if>
+      <if test="userId != null" >
+        user_id_,
+      </if>
+      <if test="logsType != null" >
+        logs_type_,
+      </if>
+      <if test="url != null" >
+        url_,
+      </if>
+      <if test="ip != null" >
+        ip_,
+      </if>
+      <if test="classPath != null" >
+        class_path_,
+      </if>
+      <if test="askMethod != null" >
+        ask_method_,
+      </if>
+      <if test="methodPath != null" >
+        method_path_,
+      </if>
+      <if test="requestMethod != null" >
+        request_method_,
+      </if>
+      <if test="description != null" >
+        description_,
+      </if>
+      <if test="errorCode != null" >
+        error_code_,
+      </if>
+      <if test="createDate != null" >
+        create_date_,
+      </if>
+      <if test="wasteTime != null" >
+        waste_time_,
+      </if>
+      <if test="wasteTimeMsg != null" >
+        waste_time_msg_,
+      </if>
+      <if test="params != null" >
+        params_,
+      </if>
+      <if test="errorMsg != null" >
+        error_msg_,
+      </if>
+      <if test="methodResultValue != null" >
+        method_result_value_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="logsType != null" >
+        #{logsType,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="classPath != null" >
+        #{classPath,jdbcType=VARCHAR},
+      </if>
+      <if test="askMethod != null" >
+        #{askMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="methodPath != null" >
+        #{methodPath,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMethod != null" >
+        #{requestMethod,jdbcType=CHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null" >
+        #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wasteTime != null" >
+        #{wasteTime,jdbcType=BIGINT},
+      </if>
+      <if test="wasteTimeMsg != null" >
+        #{wasteTimeMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null" >
+        #{params,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="errorMsg != null" >
+        #{errorMsg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="methodResultValue != null" >
+        #{methodResultValue,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据主键来更新数据库记录 -->
+  <update id="updateByPrimaryKey" parameterType="pers.ljy.background.model.SysLogsEntity">
+	   update sys_logs
+	    <set >
+	      <if test="userId != null" >
+	        user_id_ = #{userId,jdbcType=INTEGER},
+	      </if>
+	      <if test="logsType != null" >
+	        logs_type_ = #{logsType,jdbcType=CHAR},
+	      </if>
+	      <if test="url != null" >
+	        url_ = #{url,jdbcType=VARCHAR},
+	      </if>
+	      <if test="ip != null" >
+	        ip_ = #{ip,jdbcType=VARCHAR},
+	      </if>
+	      <if test="classPath != null" >
+	        class_path_ = #{classPath,jdbcType=VARCHAR},
+	      </if>
+	      <if test="askMethod != null" >
+	        ask_method_ = #{askMethod,jdbcType=VARCHAR},
+	      </if>
+	      <if test="methodPath != null" >
+	        method_path_ = #{methodPath,jdbcType=VARCHAR},
+	      </if>
+	      <if test="requestMethod != null" >
+	        request_method_ = #{requestMethod,jdbcType=CHAR},
+	      </if>
+	      <if test="description != null" >
+	        description_ = #{description,jdbcType=VARCHAR},
+	      </if>
+	      <if test="errorCode != null" >
+	        error_code_ = #{errorCode,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createDate != null" >
+	        create_date_ = #{createDate,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="wasteTime != null" >
+	        waste_time_ = #{wasteTime,jdbcType=BIGINT},
+	      </if>
+	      <if test="wasteTimeMsg != null" >
+	        waste_time_msg_ = #{wasteTimeMsg,jdbcType=VARCHAR},
+	      </if>
+	      <if test="params != null" >
+	        params_ = #{params,jdbcType=LONGVARCHAR},
+	      </if>
+	      <if test="errorMsg != null" >
+	        error_msg_ = #{errorMsg,jdbcType=LONGVARCHAR},
+	      </if>
+	      <if test="methodResultValue != null" >
+	        method_result_value_ = #{methodResultValue,jdbcType=LONGVARCHAR},
+	      </if>
+	    </set>
+	    where id_ = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 根据主键获取一条数据库记录 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_logs
+    where id_ = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 获取全部数据库记录 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_logs
+  </select>
+</mapper>

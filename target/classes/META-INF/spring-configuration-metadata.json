@@ -1,0 +1,18 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "pers.ljy.background.datasource.DataSourceConfiguration",
+      "name": "druid.master",
+      "sourceMethod": "public javax.sql.DataSource masterDataSource() ",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "pers.ljy.background.datasource.DataSourceConfiguration",
+      "name": "druid.slave",
+      "sourceMethod": "public javax.sql.DataSource slaveDataSource1() ",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}
