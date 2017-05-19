@@ -1,5 +1,7 @@
 package pers.ljy.background.datasource;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -41,13 +43,25 @@ public class DataSourceConfiguration {
 	  }
 	 
 	  /**
-	   * 设置从库数据源 
-	   * @return 返回从库数据源
+	   * 设置从库数据源 从库1 
+	   * @return 返回从库1数据源
 	   */
-	  @Bean(name = "slaveDataSource")
-	  @ConfigurationProperties(prefix = "druid.slave")
-	  public DataSource slaveDataSource1(){
+	  @Bean(name = "slaveDataSource1")
+	  @ConfigurationProperties(prefix = "druid.slaveOne")
+	  public DataSource slaveDataSourceOne(){
 	    return DataSourceBuilder.create().type(dataSourceType).build();
 	  }
-
+	  
+	  /**
+	   * 多个从库
+	   * @return
+	   */
+	  @Bean(name = "slaveDataSources")
+	  public CopyOnWriteArrayList<DataSource> slaveDataSources(){
+		  CopyOnWriteArrayList<DataSource> dataSources = new CopyOnWriteArrayList<>();  
+	      dataSources.add(slaveDataSourceOne());   
+	      return dataSources;  
+	  }
+	  
+	 
 }

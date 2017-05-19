@@ -10,15 +10,16 @@ import pers.ljy.background.service.logs.SysLogsService;
 import pers.ljy.background.share.dao.BaseDao;
 import pers.ljy.background.share.service.impl.BaseServiceImpl;
 
-//@Service
+@Service
 public class SysLogsServiceImpl extends BaseServiceImpl<SysLogsEntity, Integer> implements SysLogsService {
 
-	//@Autowired
-	//private SysLogsDao logsDao;
+	@Autowired
+	private SysLogsDao logsDao;
 
 	@Override
 	public BaseDao<SysLogsEntity, Integer> getDao() {
-		return null;
+		System.out.println("SysLogsServiceImpl === "+ logsDao);
+		return logsDao;
 	}
 
 	

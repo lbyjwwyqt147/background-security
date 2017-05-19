@@ -5,6 +5,8 @@ server:
 #数据源配置
 druid:
    type: com.alibaba.druid.pool.DruidDataSource
+   #从库数量
+   slaveSize: 1
    #主库
    master:
         url: jdbc:mysql://127.0.0.1:3306/background_security?useUnicode=true&characterEncoding=UTF-8
@@ -30,7 +32,7 @@ druid:
         removeAbandonedTimeout: 1800
         logAbandoned: true
    #从库
-   slave:
+   slaveOne:
         url: jdbc:mysql://127.0.0.1:3306/background_security?useUnicode=true&characterEncoding=UTF-8
         username: root
         password: root@123

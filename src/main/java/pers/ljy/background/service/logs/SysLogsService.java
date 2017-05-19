@@ -15,5 +15,6 @@ import pers.ljy.background.share.service.BaseService;
  * @author ljy
  */
 public interface SysLogsService extends BaseService<SysLogsEntity, Integer> {
-
+   
+	
 }

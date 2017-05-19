@@ -3,6 +3,8 @@ package pers.ljy.background.mapper;
 
 
 
+import org.apache.ibatis.annotations.Mapper;
+
 import pers.ljy.background.model.SysLogsEntity;
 import pers.ljy.background.share.dao.BaseDao;
 
@@ -17,6 +19,7 @@ import pers.ljy.background.share.dao.BaseDao;
  * @version 1.0
  * @author ljy
  */
+@Mapper
 public interface SysLogsDao extends BaseDao<SysLogsEntity, Integer>{
     
 }

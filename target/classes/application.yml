@@ -6,14 +6,12 @@ spring:
   profiles:
     active: dev
     
-#mybatis 配置
+  #mybatis 配置
 mybatis: 
    #指明mapper的xml文件存放位置
    mapperLocations: classpath:sqlMapperXml/*.xml
    #指明和数据库映射的实体的所在包
    typeAliasesPackage: pers.ljy.background.model 
-   #指明dao文件存放位置
-   mapperDaoPackge: pers.ljy.background.mapper
    #mybatis 分页插件配置
    pagehelper:
       helperDialect: mysql

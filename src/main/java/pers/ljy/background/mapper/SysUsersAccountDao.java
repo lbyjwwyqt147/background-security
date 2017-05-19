@@ -1,9 +1,10 @@
 package pers.ljy.background.mapper;
 
 
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
 import pers.ljy.background.model.SysUsersAccountEntity;
+import pers.ljy.background.share.dao.BaseDao;
 
 /***
  * 文件名称: SysUsersAccountDao.java
@@ -16,33 +17,13 @@ import pers.ljy.background.model.SysUsersAccountEntity;
  * @version 1.0
  * @author ljy
  */
-public interface SysUsersAccountDao {
-    /**
-     * 根据主键删除数据库的记录
-     * @param id
-     */
-    int deleteByPrimaryKey(Integer id);
-
-    /**
-     * 插入数据库记录
-     * @param record
-     */
-    int insert(SysUsersAccountEntity record);
-
-    /**
-     * 根据主键获取一条数据库记录
-     * @param id
-     */
-    SysUsersAccountEntity selectByPrimaryKey(Integer id);
-
-    /**
-     * 获取全部数据库记录
-     */
-    List<SysUsersAccountEntity> selectAll();
-
-    /**
-     * 根据主键来更新数据库记录
-     * @param record
-     */
-    int updateByPrimaryKey(SysUsersAccountEntity record);
+@Mapper
+public interface SysUsersAccountDao extends BaseDao<SysUsersAccountEntity, Integer>{
+    
+	/**
+	 * 根据用户名查询账户信息
+	 * @param userName  用户名
+	 * @return
+	 */
+	SysUsersAccountEntity selectUsersAccount(String userName);
 }

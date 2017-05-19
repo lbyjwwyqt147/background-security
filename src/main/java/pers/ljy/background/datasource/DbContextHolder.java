@@ -12,23 +12,32 @@ package pers.ljy.background.datasource;
  * @author ljy
  */
 public class DbContextHolder {
-	public enum DbType{
-	    MASTER,SLAVE
-	  }
+	  private static final ThreadLocal<String> contextHolder = new ThreadLocal<>();
 	 
-	  private static final ThreadLocal<DbType> contextHolder = new ThreadLocal<>();
-	 
-	  public static void setDbType(DbType dbType){
-	    if(dbType==null)throw new NullPointerException();
-	    contextHolder.set(dbType);
-	  }
-	 
-	  public static DbType getDbType(){
-	    return contextHolder.get()==null?DbType.MASTER:contextHolder.get();
-	  }
-	 
+	  public static ThreadLocal<String> getLocal() {  
+	      return contextHolder;  
+	  }  
+	  
+      /** 
+       * 读可能是多个库 
+       */  
+      public static void read() {  
+    	 contextHolder.set(DataSourceType.read.getType());  
+      }  
+	  
+	   /** 
+	    * 写只有一个库 
+	    */  
+	  public static void write() {  
+	     contextHolder.set(DataSourceType.write.getType());  
+	  }  
+	  
+	  public static String getJdbcType() {  
+	      return contextHolder.get();  
+	  }  
+	  
 	  public static void clearDbType(){
-	    contextHolder.remove();
+	      contextHolder.remove();
 	  }
 
 

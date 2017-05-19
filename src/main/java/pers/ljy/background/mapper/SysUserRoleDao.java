@@ -1,9 +1,11 @@
 package pers.ljy.background.mapper;
 
+import java.util.concurrent.CopyOnWriteArrayList;
 
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
 import pers.ljy.background.model.SysUserRoleEntity;
+import pers.ljy.background.share.dao.BaseDao;
 
 /***
  * 文件名称: SysUserRoleDao.java
@@ -16,33 +18,13 @@ import pers.ljy.background.model.SysUserRoleEntity;
  * @version 1.0
  * @author ljy
  */
-public interface SysUserRoleDao {
-    /**
-     * 根据主键删除数据库的记录
-     * @param id
-     */
-    int deleteByPrimaryKey(Integer id);
-
-    /**
-     * 插入数据库记录
-     * @param record
-     */
-    int insert(SysUserRoleEntity record);
-
-    /**
-     * 根据主键获取一条数据库记录
-     * @param id
-     */
-    SysUserRoleEntity selectByPrimaryKey(Integer id);
-
-    /**
-     * 获取全部数据库记录
-     */
-    List<SysUserRoleEntity> selectAll();
-
-    /**
-     * 根据主键来更新数据库记录
-     * @param record
-     */
-    int updateByPrimaryKey(SysUserRoleEntity record);
+@Mapper
+public interface SysUserRoleDao extends BaseDao<SysUserRoleEntity, Integer> {
+   
+	/**
+	 * 根据用户ID 获取用户所属的角色
+	 * @param userId
+	 * @return
+	 */
+	CopyOnWriteArrayList<SysUserRoleEntity> selectUserRoleByUserId(Integer userId);
 }

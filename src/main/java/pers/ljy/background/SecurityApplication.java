@@ -5,9 +5,7 @@ import javax.security.auth.message.config.AuthConfigFactory;
 import org.apache.catalina.authenticator.jaspic.AuthConfigFactoryImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages={"service","mapper","web"})//扫描指定包及下面子包 
 @SpringBootApplication 
 public class SecurityApplication {
 

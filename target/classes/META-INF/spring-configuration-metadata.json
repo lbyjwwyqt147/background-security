@@ -9,8 +9,8 @@
     },
     {
       "sourceType": "pers.ljy.background.datasource.DataSourceConfiguration",
-      "name": "druid.slave",
-      "sourceMethod": "public javax.sql.DataSource slaveDataSource1() ",
+      "name": "druid.slaveOne",
+      "sourceMethod": "public javax.sql.DataSource slaveDataSourceOne() ",
       "type": "javax.sql.DataSource"
     }
   ],
